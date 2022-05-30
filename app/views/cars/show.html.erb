@@ -1,5 +1,5 @@
 <ul>
   <li><%=@car.car_model  %></li>
   <li><%=@car.color %></li>
-  <li><%=@car.user.first_name %></li>
+  <%= link_to "Delete your trash car 🗑️", car_path(@car), method: :delete %>
 </ul>
