@@ -14,7 +14,13 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     @car.user = current_user
-    @car.save ? render(car_path(@car)) : render(:new)
+    @car.save ? redirect_to(cars_path(@car)) : render(:new)
+  end
+
+  def destroy
+    @car = Car.find(params[:id])
+    @car.destroy
+    redirect_to cars_path
   end
 
   private
