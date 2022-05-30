@@ -1,0 +1,7 @@
+<ul>
+  <% @cars.each do |car| %>
+    <li>Car: <%= car.model_name %></li>
+    <li>Color: <%= car.color %></li>
+    <li>Created By <%= car.user.first_name %></li>
+  <% end %>
+</ul>
