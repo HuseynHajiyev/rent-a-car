@@ -1,11 +1,17 @@
-<ul>
-  <% @cars.each do |car| %>
-    <li>Car: <%= car.car_model %></li>
-    <li>Color: <%= car.color %></li>
-    <li>Created By <%= car.user.first_name %></li>
-    <li><%= link_to "Check the car out", car_path(car)%></li>
-    <br>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="cards">
+    <% @cars.each do |car| %>
+    <div class="card-product">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-product-infos">
+        <h2>Car: <%= car.car_model %></h2>
+        <p>Color: <%= car.color %></p>
+        <%# Created By <%= car.user.first_name %>
+        <%= link_to "Details", car_path(car)%>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to "Add a new car", new_car_path, class: "btn btn-primary" %>
