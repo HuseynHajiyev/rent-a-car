@@ -1,5 +1,6 @@
 <ul>
   <li><%=@car.car_model  %></li>
   <li><%=@car.color %></li>
+  <li><%= link_to "Book this car", new_car_booking_path(@car), class: "btn btn-success"%></li>
   <%= link_to "Delete your trash car 🗑️", car_path(@car), method: :delete %>
 </ul>
