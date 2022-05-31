@@ -1,7 +1,11 @@
 <div class="show-container">
   <div class="show-card">
     <h1><%=@car.car_model  %></h1>
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="card-img">
+    <% if @car.photo.attached?%>
+      <%= cl_image_tag @car.photo.key %>
+    <% else %>
+      <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", class: "h-25 w-25" %>
+    <% end %>
     <p>Color: <%=@car.color %><p>
     <p><%= link_to "Book this car", new_car_booking_path(@car), class: "btn card-button"%> | <%= link_to "Delete your car", car_path(@car), class: "btn card-button", method: :delete %></p>
   </div>

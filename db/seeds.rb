@@ -10,7 +10,8 @@ require 'faker'
 10.times do
   car = Car.new(
     car_model: Faker::Vehicle.make_and_model,
-    color: Faker::Vehicle.color
+    color: Faker::Vehicle.color,
+    user: User.all.sample
   )
   car.save!
 end

@@ -2,7 +2,11 @@
   <div class="cards">
     <% @cars.each do |car| %>
     <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <% if car.photo.attached?%>
+      <%= cl_image_tag car.photo.key %>
+    <% else %>
+      <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg" %>
+    <% end %>
       <div class="card-product-infos">
         <h2>Car: <%= car.car_model %></h2>
         <p>Color: <%= car.color %></p>

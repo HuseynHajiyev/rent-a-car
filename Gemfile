@@ -38,6 +38,13 @@ gem 'devise'
 #pundit
 gem 'pundit'
 
+#cloudinary
+gem 'cloudinary', '~> 1.16.0'
+
+#faker
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+#.env
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
