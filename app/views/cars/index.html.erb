@@ -6,12 +6,9 @@
       <div class="card-product-infos">
         <h2>Car: <%= car.car_model %></h2>
         <p>Color: <%= car.color %></p>
-        <%# Created By <%= car.user.first_name %>
-        <%= link_to "Details", car_path(car)%>
+        <p><%= link_to "Details", car_path(car)%></p>
       </div>
     </div>
     <% end %>
   </div>
 </div>
-
-<%= link_to "Add a new car", new_car_path, class: "btn btn-primary" %>
