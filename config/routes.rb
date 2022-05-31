@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :cars, only: %i[index show new create destroy] do
     resources :bookings, only: %i[new create]
   end
+
+  resources :bookings, only: %i[destroy]
+
+  get '/dashboard', to: "dashboards#index"
 end
