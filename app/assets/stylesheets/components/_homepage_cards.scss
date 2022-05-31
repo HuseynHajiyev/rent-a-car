@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 // Smallest device
@@ -47,7 +49,6 @@
   align-items: center;
   width: 300px;
   border-radius: 15px;
-  margin-top: 8px;
 }
 
 .card-product img {

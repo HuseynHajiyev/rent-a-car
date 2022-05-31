@@ -1,6 +1,8 @@
-<ul>
-  <li><%=@car.car_model  %></li>
-  <li><%=@car.color %></li>
-  <li><%= link_to "Book this car", new_car_booking_path(@car), class: "btn btn-success"%></li>
-  <%= link_to "Delete your trash car 🗑️", car_path(@car), method: :delete %>
-</ul>
+<div class="show-container">
+  <div class="show-card">
+    <h1><%=@car.car_model  %></h1>
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="card-img">
+    <p>Color: <%=@car.color %><p>
+    <p><%= link_to "Book this car", new_car_booking_path(@car), class: "btn card-button"%> | <%= link_to "Delete your car", car_path(@car), class: "btn card-button", method: :delete %></p>
+  </div>
+</div>

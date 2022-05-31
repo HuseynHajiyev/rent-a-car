@@ -1,0 +1,27 @@
+.show-container {
+  width: 500px;
+  margin: 0px auto;
+  display: flex;
+}
+
+.card-img {
+  width: 100%;
+  height: 300px;
+}
+
+.show-card {
+  padding: 8px;
+  background-color: #F8E2CF;
+  border-radius: 15px;
+  padding: 8px;
+  margin: 8px;
+}
+
+.card-button {
+  color: white;
+  background-color: #6F594D;
+}
+
+.card-button:hover {
+  background-color: #D0A890;
+}
