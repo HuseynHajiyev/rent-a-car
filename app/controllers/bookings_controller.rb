@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.car = Car.find(params[:car_id])
     @booking.user = current_user
+    @booking.status = "pending"
     @booking.save ? (redirect_to cars_path) : (render :new)
   end
 
