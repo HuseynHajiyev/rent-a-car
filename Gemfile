@@ -35,6 +35,9 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 #devise
 gem 'devise'
 
+#geocoder
+gem "geocoder"
+
 #pundit
 gem 'pundit'
 
