@@ -1,9 +1,18 @@
 class CarsController < ApplicationController
-  before_action :authenticate_user!
-  include Pundit
+  # before_action :authenticate_user!
+  # include Pundit
 
   def index
-    @cars = policy_scope Car
+    # @cars = policy_scope Car
+    @cars = Car.all
+    @markers = @cars.geocoded.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude
+        # info_window: render_to_string(partial: "info_window", locals: { car: car }),
+        # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
+      }
+    end
   end
 
   def show
@@ -29,6 +38,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:car_model, :color, :photo)
+    params.require(:car).permit(:address, :car_model, :color, :photo)
   end
 end
