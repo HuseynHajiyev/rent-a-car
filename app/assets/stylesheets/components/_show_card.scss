@@ -2,6 +2,8 @@
   width: 500px;
   margin: 0px auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-img {
@@ -15,6 +17,7 @@
   border-radius: 15px;
   padding: 8px;
   margin: 8px;
+  margin-top: 32px;
 }
 
 .card-button {

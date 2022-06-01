@@ -2,9 +2,9 @@
   <div class="show-card">
     <h1><%=@car.car_model  %></h1>
     <% if @car.photo.attached?%>
-      <%= cl_image_tag @car.photo.key %>
+      <%= cl_image_tag(@car.photo.key, width: 600, crop: :scale) %>
     <% else %>
-      <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", class: "h-25 w-25" %>
+      <%= image_tag("https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", width: 600, crop: :scale)%>
     <% end %>
     <p>Color: <%=@car.color %><p>
     <p><%= link_to "Book this car", new_car_booking_path(@car), class: "btn card-button"%> | <%= link_to "Delete your car", car_path(@car), class: "btn card-button", method: :delete %></p>
