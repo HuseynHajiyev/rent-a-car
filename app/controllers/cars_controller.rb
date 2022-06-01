@@ -1,6 +1,9 @@
 class CarsController < ApplicationController
+  before_action :authenticate_user!
+  include Pundit
+
   def index
-    @cars = Car.all
+    @cars = policy_scope Car
   end
 
   def show
