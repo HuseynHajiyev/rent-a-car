@@ -7,6 +7,6 @@
       <%= image_tag("https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", width: 600, crop: :scale)%>
     <% end %>
     <p>Color: <%=@car.color %><p>
-    <p><%= link_to "Book this car", new_car_booking_path(@car), class: "btn card-button"%> | <%= link_to "Delete your car", car_path(@car), class: "btn card-button", method: :delete %></p>
+    <p><%= link_to "Book this car", new_car_booking_path(@car), class: "btn card-button"%> | <%= current_user == @car.user ? (link_to "Delete your car", car_path(@car), class: "btn card-button", method: :delete) : ("") %></p>
   </div>
 </div>
