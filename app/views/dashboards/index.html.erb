@@ -1,6 +1,7 @@
-<div class="d-flex justify-content-between">
-  <div>
-    <ul class="d-flex flex-column justify-content-evenly w-25 p-3">
+<div class="row d-flex justify-content-between py-3">
+  <div class="col-3 border p-2">
+    <h2 class="text-center">My Bookings</h2>
+    <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
       <% @bookings.each do |booking| %>
         <div>
           <li>Car: <%= booking.car.car_model %></li>
@@ -14,26 +15,26 @@
       <% end %>
     </ul>
   </div>
-  <div>
-    <h1>Pending</h1>
-    <ul class="d-flex flex-column justify-content-evenly w-25 p-3">
+  <div class="col-3 border p-2">
+    <h2 class="text-center">Pending</h2>
+    <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
     <% @pending_bookings.each do |booking| %>
       <div>
         <li>Car: <%= booking.car.car_model %></li>
         <li>Start: <%=   booking.start_time %></li>
         <li>End: <%= booking.end_time %></li>
       </div>
-      <div class="d-flex justify-content-start">
-        <%= link_to "✅", booking_path(booking, name: "accept"), method: :patch %>
-        <%= link_to "❌", booking_path(booking, name: "decline"), method: :patch %>
+      <div class="d-flex justify-content-between">
+        <%= link_to "Accept ✅", booking_path(booking, name: "accept"), method: :patch, class: "btn btn-primary btn-sm" %>
+        <%= link_to "Reject ❌", booking_path(booking, name: "decline"), method: :patch, class: "btn btn-secondary btn-sm" %>
       </div>
       <br>
     <% end %>
   </ul>
   </div>
-    <div>
-    <h1>Accepted</h1>
-     <ul class="d-flex flex-column justify-content-evenly w-25 p-3">
+  <div class="col-3 border p-2">
+    <h2 class="text-center">Accepted</h2>
+     <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
       <% @accepted_bookings.each do |booking| %>
         <div>
           <li>Car: <%= booking.car.car_model %></li>
