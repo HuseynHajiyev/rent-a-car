@@ -5,7 +5,12 @@ class CarsController < ApplicationController
   before_action :car_bookings, only: %i[edit show]
 
   def index
-    @cars = Car.all
+    if params[:query].present?
+      sql_query = "car_model ILIKE :query OR address ILIKE :query"
+      @cars = Car.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @cars = Car.all
+    end
     @markers = @cars.geocoded.map do |car|
       {
         lat: car.latitude,
