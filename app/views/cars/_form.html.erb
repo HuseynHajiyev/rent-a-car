@@ -1,10 +1,16 @@
 <%= simple_form_for(@car) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :car_model %>
-  <%= f.label :color %>
-  <%= f.text_field :color %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
+  <div class="row w-15">
+    <%= f.label :name %>
+    <%= f.text_field :car_model %>
+  </div>
+  <div class="row w-15">
+    <%= f.label :color %>
+    <%= f.text_field :color %>
+  </div>
+  <div class="row w-15">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
   <%= f.input :price, as: :float %>
   <%= f.input :photo, as: :file %>
   <%= f.submit %>

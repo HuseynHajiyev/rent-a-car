@@ -9,8 +9,9 @@
     <p>Color: <%=@car.color %><p>
     <p>Price: €<%=@car.price %><p>
     <p>
-      <%= link_to "Book this car", new_car_booking_path(@car), class: "btn card-button"%>
+      <%= current_user == @car.user ? ("") : (link_to "Book this car", new_car_booking_path(@car), class: "btn card-button")%>
       <%= current_user == @car.user ? (link_to "Delete your car", car_path(@car), class: "btn card-button", method: :delete) : ("") %>
+      <%= current_user == @car.user ? (link_to "Edit this car", edit_car_path(@car), class: "btn card-button") : ("") %>
     </p>
   </div>
 </div>

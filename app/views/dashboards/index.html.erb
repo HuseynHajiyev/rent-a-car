@@ -49,4 +49,25 @@
       <% end %>
     </ul>
   </div>
+  <div class="col-3 border p-2">
+    <h2 class="text-center">My Cars</h2>
+     <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
+      <% @cars.each do |car| %>
+        <div class="border rounded">
+          <li>Car: <%= car.car_model %></li>
+          <li>Color: <%= car.color %></li>
+          <li>Price: €<%= car.price %></li>
+          <% if car.photo.attached?%>
+            <%= cl_image_tag car.photo.key %>
+          <% else %>
+            <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg" %>
+          <% end %>
+          <div class="d-flex justify-content-end">
+            <%= link_to "Edit this car", edit_car_path(car), class: "btn card-button m-2" %>
+          </div>
+        </div>
+        <br>
+      <% end %>
+    </ul>
+  </div>
 </div>
