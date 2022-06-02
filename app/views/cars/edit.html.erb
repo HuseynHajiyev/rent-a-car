@@ -24,7 +24,7 @@
         <p>Color: <%=@car.color %><p>
         <p>Price: €<%=@car.price %><p>
         <p>Address: <%= @car.address %></p>
-        <%= current_user == @car.user && @bookings == nil ? (link_to "Delete your car", car_path(@car), class: "btn card-button", method: :delete) : ("") %>
+        <%= link_to "Delete your car", car_path(@car), class: "btn card-button", method: :delete %>
         <%= current_user == @car.user && @bookings != nil ? (link_to "Edit Bookings", dashboard_path(@car), class: "btn card-button") : "" %>
         <%= link_to "Details", car_path(@car), class: "btn card-button" %>
       </div>
