@@ -2,6 +2,7 @@ class CarsController < ApplicationController
   # before_action :authenticate_user!
   # include Pundit
   before_action :find_car, only: %i[destroy show update edit]
+  before_action :car_bookings, only: %i[edit show]
 
   def index
     @cars = Car.where.not(user: current_user)
@@ -54,5 +55,9 @@ class CarsController < ApplicationController
 
   def find_car
     @car = Car.find(params[:id])
+  end
+
+  def car_bookings
+    @bookings = Booking.find_by(car: @car)
   end
 end
