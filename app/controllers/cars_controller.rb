@@ -5,7 +5,7 @@ class CarsController < ApplicationController
   before_action :car_bookings, only: %i[edit show]
 
   def index
-    @cars = Car.where.not(user: current_user)
+    @cars = Car.all
     @markers = @cars.geocoded.map do |car|
       {
         lat: car.latitude,
