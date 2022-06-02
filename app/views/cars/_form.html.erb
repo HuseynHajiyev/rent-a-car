@@ -1,14 +1,17 @@
 <%= simple_form_for(@car) do |f| %>
-  <div>
-    <%= f.input :car_model %>
+  <div class="row w-15">
+    <%= f.label :name %>
+    <%= f.text_field :car_model %>
   </div>
-  <div>
-    <%= f.input :color %>
+  <div class="row w-15">
+    <%= f.label :color %>
+    <%= f.text_field :color %>
   </div>
-  <div>
-    <%= f.input :address %>
+  <div class="row w-15">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
   </div>
-    <%= f.input :price, as: :float %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Create",class: "card-button" %>
+  <%= f.input :price, as: :float %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
 <% end %>

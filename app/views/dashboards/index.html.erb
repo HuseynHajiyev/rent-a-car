@@ -60,11 +60,11 @@
           <% if car.photo.attached?%>
             <%= cl_image_tag car.photo.key %>
           <% else %>
-            <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", class: "w-100" %>
+            <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg" %>
           <% end %>
           <div class="d-flex justify-content-end">
-            <%= current_user == car.user && @bookings == nil ? (link_to "Delete your car", car_path(car), class: "btn card-button", method: :delete) : (link_to "Edit Bookings", dashboard_path(car)) %>
-            <%= link_to "Edit this car", edit_car_path(car), class: "btn card-button" %>
+            <%=link_to "Delete your car", car_path(car), class: "btn card-button m-2", method: :delete %>
+            <%= link_to "Edit this car", edit_car_path(car), class: "btn card-button m-2" %>
           </div>
         </div>
         <br>
