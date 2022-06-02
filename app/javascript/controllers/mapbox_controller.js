@@ -12,10 +12,16 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/wvala/cl3vkiyju000314pjodxcadn7"
+      style: "mapbox://styles/wvala/cl3wswnq9000g15l119lugm32"
     })
-    this.#addMarkersToMap();
-    this.#fitMapToMarkers();
+
+    if (this.map) {
+      this.#addMarkersToMap();
+      this.#fitMapToMarkers();
+    } else {
+      console.log('map not initialzied');
+    }
+
   }
 
   #addMarkersToMap() {
