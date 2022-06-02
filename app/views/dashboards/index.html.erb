@@ -5,8 +5,8 @@
       <% @bookings.each do |booking| %>
         <div class="border-bottom-0">
           <li>Car: <%= booking.car.car_model %></li>
-          <li>Start: <%=   booking.start_time.strftime('%a %m %b %d %Y') %></li>
-          <li>End: <%= booking.end_time.strftime('%a %m %b %d %Y') %></li>
+          <li>Start: <%=   booking.start_time.strftime('%a %b %d %Y') %></li>
+          <li>End: <%= booking.end_time.strftime('%a %b %d %Y') %></li>
           <li>Status: <span id=<%= booking.status %>><%=  booking.status.upcase %></span></li>
           <%= link_to "Remove booking 🗑️", booking_path(booking), method: :delete, class: "btn card-button my-1" %>
           <div class="d-flex justify-content-end">
