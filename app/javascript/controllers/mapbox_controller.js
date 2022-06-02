@@ -21,7 +21,6 @@ export default class extends Controller {
     } else {
       console.log('map not initialzied');
     }
-
   }
 
   #addMarkersToMap() {
