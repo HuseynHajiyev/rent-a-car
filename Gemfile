@@ -38,6 +38,9 @@ gem 'devise'
 #geocoder
 gem "geocoder"
 
+#PGSearch
+gem 'pg_search', '~> 2.3.0'
+
 #pundit
 gem 'pundit'
 

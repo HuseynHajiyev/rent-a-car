@@ -1,3 +1,13 @@
+<%= form_tag @cars_path, method: :get do %>
+  <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a car",
+      autocomplete: 'on'
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <div data-controller="cars-list">
   <div class="container">
     <div class="option-list">
