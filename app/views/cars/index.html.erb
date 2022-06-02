@@ -6,7 +6,7 @@
       <p class="btn option-button" data-cars-list-target="gridButton" data-action="click->cars-list#displayToggle">See all cars</p>
     </div>
   </div>
-<div class="container  d-none" data-cars-list-target="grid"">
+<div class="container  d-none" data-cars-list-target="grid">
   <div class="cards">
     <% @cars.each do |car| %>
       <% @belongs_to_user = car.user == current_user %>
@@ -20,7 +20,7 @@
           <h2><%= @belongs_to_user ? "My " : "" %>Car: <%= car.car_model %></h2>
           <p>Color: <%= car.color %></p>
           <p>Price: €<%= car.price %></p>
-          <p><%= link_to "Details", car_path(car)%></p>
+          <p><%= link_to "Details", car_path(car), class: "btn btn-primary btn-sm"%></p>
         </div>
       </div>
       <% end %>
