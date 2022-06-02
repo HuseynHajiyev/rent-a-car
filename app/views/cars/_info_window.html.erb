@@ -3,4 +3,4 @@
 <p>Listed by <%= car.user.email %></p>
 <p>Color: <%= car.color %></p>
 <p>Location: <%= car.address %></p>
-<p><%= link_to "More information", car_path(car)%></p>
+<p><%= link_to "Details", car_path(car), class: "btn card-button"%> <%= current_user == car.user ? ("") : (link_to "Book this car", new_car_booking_path(car))%></p>
