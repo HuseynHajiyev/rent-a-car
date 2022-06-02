@@ -16,9 +16,9 @@
       <div class="show-card">
         <h1><%=@car.car_model  %></h1>
         <% if @car.photo.attached?%>
-          <%= cl_image_tag(@car.photo.key, width: 600, crop: :scale) %>
+          <%= cl_image_tag(@car.photo.key, width: 600, class: "w-100 rounded", crop: :fit) %>
         <% else %>
-          <%= image_tag("https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", class: "w-100", crop: :scale)%>
+          <%= image_tag("https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", width: 600, crop: :scale)%>
         <% end %>
         <p>Color: <%=@car.color %><p>
         <p>Price: €<%=@car.price %><p>

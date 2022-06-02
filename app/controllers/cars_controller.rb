@@ -40,7 +40,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    redirect_to cars_path
+    request.path == dashboard_path ? (render :index) : (redirect_to dashboard_path)
   end
 
   private
