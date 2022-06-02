@@ -3,14 +3,15 @@
     <h2 class="text-center">My Bookings</h2>
     <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
       <% @bookings.each do |booking| %>
-        <div>
+        <div class="border-bottom-0">
           <li>Car: <%= booking.car.car_model %></li>
-          <li>Start: <%=   booking.start_time %></li>
-          <li>Price: €<%= booking.car.price %></li>
-          <li>End: <%= booking.end_time %></li>
-        </div>
-        <div class="d-flex justify-content-start">
-          <%= link_to "🗑️", booking_path(booking), method: :delete %>
+          <li>Start: <%=   booking.start_time.strftime('%a %b %d %Y') %></li>
+          <li>End: <%= booking.end_time.strftime('%a %b %d %Y') %></li>
+          <li>Status: <span id=<%= booking.status %>><%=  booking.status.upcase %></span></li>
+          <%= link_to "Remove booking 🗑️", booking_path(booking), method: :delete, class: "btn card-button my-1" %>
+          <div class="d-flex justify-content-end">
+            <li>Price: €<%= booking.car.price %></li>
+          </div>
         </div>
         <br>
       <% end %>
@@ -53,7 +54,7 @@
     <h2 class="text-center">My Cars</h2>
      <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
       <% @cars.each do |car| %>
-        <div class="border rounded">
+        <div class="border rounded p-2">
           <li>Car: <%= car.car_model %></li>
           <li>Color: <%= car.color %></li>
           <li>Price: €<%= car.price %></li>
@@ -62,7 +63,7 @@
           <% else %>
             <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", class: "w-100" %>
           <% end %>
-          <div class="d-flex justify-content-end">
+          <div class="d-flex justify-content-between py-2">
             <%= link_to "Delete your car", car_path(car), class: "btn card-button", method: :delete %>
             <%= link_to "Edit this car", edit_car_path(car), class: "btn card-button" %>
           </div>

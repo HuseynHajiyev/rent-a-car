@@ -9,7 +9,8 @@ class CarsController < ApplicationController
     @markers = @cars.geocoded.map do |car|
       {
         lat: car.latitude,
-        lng: car.longitude
+        lng: car.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { car: car })
       }
     end
   end
@@ -17,7 +18,7 @@ class CarsController < ApplicationController
   def show; end
 
   def edit
-    @markers = { lat: @car.latitude, lng: @car.longitude }
+    @markers = [{ lat: @car.latitude, lng: @car.longitude }]
   end
 
   def new
@@ -40,7 +41,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    redirect_to cars_path
+    request.path == dashboard_path ? (render :index) : (redirect_to dashboard_path)
   end
 
   private

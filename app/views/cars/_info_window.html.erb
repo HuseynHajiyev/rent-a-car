@@ -1,0 +1,6 @@
+<h2><%= car.car_model %></h2>
+<%= cl_image_tag car.photo.key %>
+<p>Listed by <%= car.user.email %></p>
+<p>Color: <%= car.color %></p>
+<p>Location: <%= car.address %></p>
+<p><%= link_to "More information", car_path(car)%></p>

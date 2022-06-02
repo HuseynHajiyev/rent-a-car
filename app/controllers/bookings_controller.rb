@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @booking.car = Car.find(params[:car_id])
     @booking.user = current_user
     @booking.status = "pending"
-    @booking.save ? (redirect_to cars_path) : (render :new)
+    @booking.save ? (redirect_to dashboard_path) : (render :new)
   end
 
   def destroy
@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
       @booking.status = "accepted"
       @booking.save!
     else
-      @booking.destroy
+      @booking.status = "rejected"
     end
     redirect_to dashboard_path
   end
