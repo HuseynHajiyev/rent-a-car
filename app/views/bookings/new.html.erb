@@ -1,1 +1,30 @@
-<%= render "form", car: @car, user: @user%>
+<div class="container">
+  <div class="row pt-2 d-flex justify-content-evenly">
+    <div class="col-3">
+      <div class="row">
+        <%= render "form", car: @car %>
+      </div>
+      <div class="row">
+        <div style="width: 100%; height: 600px;"
+          data-controller="mapbox"
+          data-mapbox-markers-value="<%= @markers.to_json %>"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="show-card">
+        <h1><%=@car.car_model  %></h1>
+        <% if @car.photo.attached?%>
+          <%= cl_image_tag(@car.photo.key, width: 600, crop: :scale) %>
+        <% else %>
+          <%= image_tag("https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", class: "w-100", crop: :scale)%>
+        <% end %>
+        <p>Color: <%=@car.color %><p>
+        <p>Price: €<%=@car.price %><p>
+        <p>Address: <%= @car.address %></p>
+        <%= current_user == @car.user && @bookings != nil ? (link_to "Edit Bookings", dashboard_path(@car), class: "btn card-button") : "" %>
+      </div>
+    </div>
+  </div>
+</div>

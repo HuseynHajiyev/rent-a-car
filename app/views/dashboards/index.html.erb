@@ -59,7 +59,7 @@
           <li>Color: <%= car.color %></li>
           <li>Price: €<%= car.price %></li>
           <% if car.photo.attached?%>
-            <%= cl_image_tag car.photo.key, class: "w-100" %>
+            <%= cl_image_tag car.photo.key, width: 600, class: "w-100", crop: :fit%>
           <% else %>
             <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg", class: "w-100" %>
           <% end %>
