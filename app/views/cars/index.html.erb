@@ -1,18 +1,22 @@
-<%= form_tag @cars_path, method: :get do %>
-  <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a car",
-      autocomplete: 'on'
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
+<br>
+<div class="container">
+  <div class="search-bar">
+    <%= form_tag @cars_path, method: :get do %>
+    <div class="d-flex">
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a car...",
+          autocomplete: 'on'
+      %> <%= submit_tag "Search", class: "btn option-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 <div data-controller="cars-list">
   <div class="container">
     <div class="option-list">
       <br>
-      <h4>What are you looking for?</h4>
       <p class="btn option-button" data-cars-list-target="gridButton" data-action="click->cars-list#displayToggle">See all cars</p>
     </div>
   </div>
@@ -30,7 +34,7 @@
           <h2><%= @belongs_to_user ? "My " : "" %>Car: <%= car.car_model %></h2>
           <p>Color: <%= car.color %></p>
           <p>Price: €<%= car.price %></p>
-          <p><%= link_to "Details", car_path(car), class: "btn btn-primary btn-sm"%></p>
+          <p><%= link_to "Details", car_path(car), class: "btn option-button btn-sm"%></p>
         </div>
       </div>
       <% end %>
