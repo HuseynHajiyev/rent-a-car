@@ -10,7 +10,7 @@
    left: 0;
    bottom: 0;
    width: 100%;
-   color: #FAF9F6;
+   color: #6F594D;
    margin-top: 32px;
  }
  .footer-links {
@@ -38,4 +38,9 @@
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;
+}
+
+.clear {
+  clear: both;
+  height: 100px;
 }
