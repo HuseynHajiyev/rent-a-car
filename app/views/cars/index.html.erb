@@ -1,19 +1,27 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1471958680802-1345a694ba6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80);">
-  <div class="container">
-    <h1><strong>Kanaku</strong> helps users list and rent cars around the globe</h1>
-    <p>Instead of one place, it's good all over the place</p>
+<div data-controller="banner-size">
+  <div data-banner-size-target="banner" class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1471958680802-1345a694ba6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80);">
+    <%# <%= @cars.empty? ? <div class="yellow-alert"></div> : ""%>
+    <% if @cars.empty? %>
+      <div class="yellow-alert"></div>
+    <% else %>
+      <div></div>
+    <% end %>
     <div class="container">
-      <div class="search-bar">
-        <%= form_tag @cars_path, method: :get do %>
-        <div class="d-flex">
-          <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Find a car today",
-              autocomplete: 'on'
-          %> <%= submit_tag "Search", class: "btn option-button" %>
-          </div>
-        <% end %>
+      <h1><strong>Kanaku</strong> helps users list and rent cars around the globe</h1>
+      <p>Instead of one place, it's good all over the place</p>
+      <div class="container">
+        <div class="search-bar">
+          <%= form_tag @cars_path, method: :get do %>
+          <div class="d-flex">
+            <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Find a car today",
+                autocomplete: 'on'
+            %> <div data-action="click->banner-size#shrinkBanner"><%= submit_tag "Search", class: "btn option-button", type: "button"%></div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -40,6 +48,7 @@
           <h2><%= @belongs_to_user ? "My " : "" %>Car: <%= car.car_model %></h2>
           <p>Color: <%= car.color %></p>
           <p>Price: €<%= car.price %></p>
+          <p>Address: <%= car.address %></p>
           <p><%= link_to "Details", car_path(car), class: "btn option-button btn-sm"%></p>
         </div>
       </div>
