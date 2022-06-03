@@ -6,8 +6,10 @@ class CarsController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = "car_model ILIKE :query OR address ILIKE :query"
-      @cars = Car.where(sql_query, query: "%#{params[:query]}%")
+      # sql_query = "car_model ILIKE :query OR address ILIKE :query"
+      # @cars = Car.where(sql_query, query: "%#{params[:query]}%")
+      car_ids = query_search_ids(params)
+      @cars = Car.where(id: car_ids)
     else
       @cars = Car.all
     end
@@ -65,5 +67,24 @@ class CarsController < ApplicationController
 
   def car_bookings
     @bookings = Booking.find_by(car: @car)
+  end
+
+  def query_search_ids(params)
+    split_query_array = params[:query].split
+    car_ids = search_by_address_or_model(split_query_array)
+    return car_ids
+  end
+
+  def search_by_address_or_model(split_query_array)
+    sql_query_car_model = "car_model ILIKE :query"
+    sql_query_address = "address ILIKE :query"
+    car_ids = []
+    split_query_array.each do |word|
+      car_model_ids = Car.where(sql_query_car_model, query: "%#{word}%").map(&:id)
+      car_address_ids = Car.where(sql_query_address, query: "%#{word}%").map(&:id)
+      car_near_ids = Car.near(word).map(&:id)
+      car_ids += [car_model_ids, car_address_ids, car_near_ids].flatten.compact.uniq
+    end
+    return car_ids
   end
 end
