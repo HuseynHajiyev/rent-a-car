@@ -1,8 +1,8 @@
 <div class= "dashboard-container">
   <div class="bookings-container">
-    <h2 class="text-center">Bookings</h2>
+    <h2 class="text-center" id="bookings-main-header">Bookings</h2>
      <div class="border p-2">
-    <h2 class="text-center">My Bookings</h2>
+    <h2 class="text-center">My Booked Cars</h2>
     <ul class="d-flex flex-column justify-content-evenly w-70 px-3">
       <% @bookings.each do |booking| %>
         <div class="border-bottom-0">
@@ -21,7 +21,7 @@
   </div>
       <% unless @accepted_bookings.empty? %>
       <div class="border p-2 my-3">
-        <h2 class="text-center">Accepted</h2>
+        <h2 class="text-center">My Accepted Bookings </h2>
         <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
           <% @accepted_bookings.each do |booking| %>
             <div>
@@ -38,7 +38,7 @@
       <% end %>
       <% unless @pending_bookings.empty? %>
         <div class="border p-2 my-3">
-          <h2 class="text-center">Pending</h2>
+          <h2 class="text-center">My Pending Bookings</h2>
           <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
           <% @pending_bookings.each do |booking| %>
             <div>
@@ -58,7 +58,7 @@
       <% end %>
   </div>
   <div class="cars-container">
-    <h2 class="text-center">My Cars</h2>
+    <h2 class="text-center" id="cars-main-header">My Cars</h2>
     <ul class="d-flex flex-column justify-content-evenly w-70 px-3">
       <% @cars.each do |car| %>
         <div class="border rounded p-2" id = "car-card">
