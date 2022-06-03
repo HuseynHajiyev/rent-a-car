@@ -18,12 +18,11 @@
             <%= link_to "Bookings", dashboard_path, class: "nav-link" %>
           </li>
            <li class="nav-item">
-            <%= link_to "New Car", new_car_path, class: "nav-link", class:"btn option-button p-2 mx-1"%>
+            <%= link_to "New Car", new_car_path, class: "nav-link", class:"btn option-button p-1 mx-1"%>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://i.pinimg.com/originals/d1/51/62/d15162b27cd9712860b90abe58cb60e7.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= link_to current_user.email, "#", class: "dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to current_user.email, "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
