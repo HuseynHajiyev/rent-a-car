@@ -1,7 +1,9 @@
-<div class="row d-flex justify-content-between py-3">
-  <div class="col-3 border p-2">
+<div class= "dashboard-container">
+  <div class="bookings-container">
+    <h2 class="text-center">Bookings</h2>
+     <div class="border p-2">
     <h2 class="text-center">My Bookings</h2>
-    <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
+    <ul class="d-flex flex-column justify-content-evenly w-70 px-3">
       <% @bookings.each do |booking| %>
         <div class="border-bottom-0">
           <li>Car: <%= booking.car.car_model %></li>
@@ -17,42 +19,43 @@
       <% end %>
     </ul>
   </div>
-  <div class="col-3 border p-2">
-    <h2 class="text-center">Pending</h2>
-    <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
-    <% @pending_bookings.each do |booking| %>
-      <div>
-        <li>Car: <%= booking.car.car_model %></li>
-        <li>Start: <%=   booking.start_time %></li>
-        <li>Price: €<%= booking.car.price %></li>
-        <li>End: <%= booking.end_time %></li>
+      <div class="border p-2 my-3">
+        <h2 class="text-center">Accepted</h2>
+        <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
+          <% @accepted_bookings.each do |booking| %>
+            <div>
+              <li>Car: <%= booking.car.car_model %></li>
+              <li>Start: <%=   booking.start_time %></li>
+              <li>Price: €<%= booking.car.price %></li>
+              <li>End: <%= booking.end_time %></li>
+              <li>Status <%= booking.status.capitalize %></li>
+            </div>
+            <br>
+          <% end %>
+        </ul>
       </div>
-      <div class="d-flex justify-content-between">
-        <%= link_to "Accept ✅", booking_path(booking, name: "accept"), method: :patch, class: "btn btn-primary btn-sm" %>
-        <%= link_to "Reject ❌", booking_path(booking, name: "decline"), method: :patch, class: "btn btn-secondary btn-sm" %>
+      <div class="border p-2 my-3">
+        <h2 class="text-center">Pending</h2>
+        <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
+        <% @pending_bookings.each do |booking| %>
+          <div>
+            <li>Car: <%= booking.car.car_model %></li>
+            <li>Start: <%=   booking.start_time %></li>
+            <li>Price: €<%= booking.car.price %></li>
+            <li>End: <%= booking.end_time %></li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <%= link_to "Accept ✅", booking_path(booking, name: "accept"), method: :patch, class: "btn card-button" %>
+            <%= link_to "Reject ❌", booking_path(booking, name: "decline"), method: :patch, class: "btn card-button" %>
+          </div>
+          <br>
+        <% end %>
+        </ul>
       </div>
-      <br>
-    <% end %>
-  </ul>
   </div>
-  <div class="col-3 border p-2">
-    <h2 class="text-center">Accepted</h2>
-     <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
-      <% @accepted_bookings.each do |booking| %>
-        <div>
-          <li>Car: <%= booking.car.car_model %></li>
-          <li>Start: <%=   booking.start_time %></li>
-          <li>Price: €<%= booking.car.price %></li>
-          <li>End: <%= booking.end_time %></li>
-          <li>Status <%= booking.status.capitalize %></li>
-        </div>
-        <br>
-      <% end %>
-    </ul>
-  </div>
-  <div class="col-3 border p-2">
+  <div class="cars-container">
     <h2 class="text-center">My Cars</h2>
-     <ul class="d-flex flex-column justify-content-evenly w-70 p-3">
+    <ul class="d-flex flex-column justify-content-evenly w-70 px-3">
       <% @cars.each do |car| %>
         <div class="border rounded p-2">
           <li>Car: <%= car.car_model %></li>
