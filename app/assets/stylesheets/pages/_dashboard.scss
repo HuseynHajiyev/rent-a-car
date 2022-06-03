@@ -9,3 +9,35 @@
 .cars-container{
   width: 50vw;
 }
+
+.cars-container > ul {
+  padding-left: 1px !important;
+  list-style-type: none;
+}
+
+#car-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 8px;
+  background-color: #F8E2CF;
+  padding: 15px;
+  padding-left: 0;
+  max-width: 99.5%;
+}
+
+#car-img {
+  border-radius: 20px;
+}
+
+#bookings-main-header {
+  padding: 16px;
+  color: white;
+  background-color: #6F594D;
+  border-right: 2px solid #000000;
+}
+
+#cars-main-header {
+  padding: 16px;
+  color: white;
+  background-color: #6F594D;
+}
