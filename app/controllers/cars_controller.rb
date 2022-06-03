@@ -94,7 +94,8 @@ class CarsController < ApplicationController
   def proximity_search(car_models, car_addresses, words)
     relevant_car_ids = []
     sql_query_car_model = "car_model ILIKE :query"
-    model_name_from_query = words.select { |word| car_models.map(&:downcase).include?(word.downcase) }.join(" ")
+    model_name_from_query = words.select { |word| car_models.map(&:downcase).include?(/.*#{word.downcase}.*/) }.join(" ")
+    raise
     location_name_from_query = words.reject { |word| car_models.map(&:downcase).include?(word.downcase) }.join(" ")
     proximity_result = Car.near(location_name_from_query)
     if !car_models.empty? && !proximity_result.empty? # there is an address and model name
