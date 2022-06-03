@@ -9,3 +9,16 @@
 .cars-container{
   width: 50vw;
 }
+
+#car-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 8px;
+  background-color: #F8E2CF;
+  padding: 15px;
+  max-width: 95%;
+}
+
+#car-img {
+  border-radius: 20px;
+}
