@@ -71,20 +71,44 @@ class CarsController < ApplicationController
 
   def query_search_ids(params)
     split_query_array = params[:query].split
-    car_ids = search_by_address_or_model(split_query_array)
+    car_ids = search_ids_by_address_or_model(split_query_array)
     return car_ids
   end
 
-  def search_by_address_or_model(split_query_array)
+  def search_ids_by_address_or_model(split_query_array)
     sql_query_car_model = "car_model ILIKE :query"
     sql_query_address = "address ILIKE :query"
     car_ids = []
+    car_models = []
+    car_addresses = []
     split_query_array.each do |word|
-      car_model_ids = Car.where(sql_query_car_model, query: "%#{word}%").map(&:id)
-      car_address_ids = Car.where(sql_query_address, query: "%#{word}%").map(&:id)
-      car_near_ids = Car.near(word).map(&:id)
-      car_ids += [car_model_ids, car_address_ids, car_near_ids].flatten.compact.uniq
+      Car.where(sql_query_car_model, query: "%#{word}%").each { |car| car_models << car.car_model }
     end
+    location_name_from_query = split_query_array.reject { |word| car_models.include?(word.downcase) }.join(" ")
+    return Car.near(location_name_from_query).map(&:id) if car_models.empty?
+
+    car_ids += proximity_search(car_models, car_addresses, split_query_array).flatten.compact.uniq
     return car_ids
+  end
+
+  def proximity_search(car_models, car_addresses, words)
+    relevant_car_ids = []
+    sql_query_car_model = "car_model ILIKE :query"
+    regex = /.*#{words[0]}.*/
+    model_name_from_query = car_models.map(&:downcase).select { |car| regex.match?(car) }.uniq.join(" ")
+    location_name_from_query = words.reject { |word| car_models.map(&:downcase).include?(word.downcase) }.join(" ")
+    proximity_result = Car.near(location_name_from_query)
+    if !car_models.empty? && !proximity_result.empty? # there is an address and model name
+      relevant_car_ids += Car.near(location_name_from_query).select { |car| car_models.include?(car.car_model.downcase) }.map(&:id)
+    elsif !car_models.empty? && proximity_result.empty? # there is no address but there is a model name
+      relevant_car_ids += Car.where(sql_query_car_model, query: "%#{model_name_from_query}%").map(&:id)
+    elsif car_models.empty? && !proximity_result.empty? # there is an address but there is no model name
+      relevant_car_ids += Car.near(location_name_from_query).map(&:id)
+    else
+      car_by_location = Car.near(location_name_from_query)
+      car_by_location = car_by_location.select { |car| car_models.include?(car.car_model.downcase) }
+      relevant_car_ids += car_by_location.map(&:id)
+    end
+    return relevant_car_ids
   end
 end
