@@ -3,7 +3,6 @@
   border-style: solid;
   border-color: #6F594D;
   border-radius: 5px;
-
   height: 100%;
   width: 100%;
 }
@@ -26,6 +25,11 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
+  border-color: #6F594D;
+  border-width: 1px;
+  border-style: solid;
+  background-color: #FDF6F0;
+  border-radius: 5px;
 }
 
 .mapboxgl-popup {
