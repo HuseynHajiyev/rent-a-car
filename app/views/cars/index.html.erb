@@ -42,7 +42,7 @@
           <%= image_tag "https://res.cloudinary.com/wvala/image/upload/v1653656942/cld-sample.jpg" %>
         <% end %>
         <div class="card-product-infos">
-          <h2><%= @belongs_to_user ? "My " : "" %>Car: <%= car.car_model %></h2>
+          <h2><span id="mine"><%= @belongs_to_user ? "My " : "" %></span>Car: <%= car.car_model %></h2>
           <p>Color: <%= car.color %></p>
           <p>Price: €<%= car.price %></p>
           <p>Address: <%= car.address %></p>
